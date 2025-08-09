@@ -9,7 +9,11 @@ import { PrismaClient } from "@prisma/client"
 const app = express()
 const prisma = new PrismaClient()
 
-app.use(cors())
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
+}))
 app.use(express.json())
 
 app.get("/users", async (_, res) => {
