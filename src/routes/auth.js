@@ -1,5 +1,5 @@
 import express from "express"
-import { clerk } from "../utils/clerkClient"
+import { clerk } from "../utils/clerkClient.js"
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
