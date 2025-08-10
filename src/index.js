@@ -4,8 +4,16 @@ import authRouter from "./routes/auth.js"
 
 const app = express()
 
-app.use(cors())
+
 app.use(express.json())
+app.use(cors({
+  origin: ["http://localhost:5173", "https://frontend-domain.com"],
+  credentials: true
+}))
+
+app.get("/", (req, res) => {
+  res.send("Backend berjalan!")
+})
 
 app.use(authRouter)
 
