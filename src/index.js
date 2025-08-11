@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import authRoutes from "./routes/auth.js"
+import webhookRoutes from "./routes/webhook.js"
 
 const app = express()
 
@@ -14,6 +15,7 @@ app.use(cors({
 app.get("/", (req, res) => {
   res.send("Backend berjalan!")
 })
+app.use("/", webhookRoutes)
 
 app.use(authRoutes)
 
