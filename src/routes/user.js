@@ -16,6 +16,7 @@ router.post("/sync-user", requireAuth(), async (req, res) => {
     const user = await fetch(`https://api.clerk.dev/v1/users/${userId}`, {
       headers: { Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}` }
     }).then(res => res.json())
+    console.log("Clerk API response:", user)
     const dbUser = await prisma.user.upsert({
       where: { clerkId: user.id },
       update: {
