@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import authRoutes from "./routes/auth.js"
 import webhookRoutes from "./routes/webhook.js"
+import userRoutes from "./routes/user.js"
 
 const app = express()
 
@@ -11,11 +12,13 @@ app.use(cors({
   credentials: true
 }))
 
+app.use("/", webhookRoutes)
+app.use(authRoutes)
+app.use(userRoutes)
+
 app.get("/", (req, res) => {
   res.send("Backend berjalan!")
 })
-app.use("/", webhookRoutes)
-app.use(authRoutes)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
