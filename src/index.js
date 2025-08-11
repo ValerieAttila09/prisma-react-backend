@@ -2,11 +2,11 @@ import express from "express"
 import cors from "cors"
 import authRoutes from "./routes/auth.js"
 import webhookRoutes from "./routes/webhook.js"
-import { ClerkExpressRequireAuth } from "@clerk/express"
+import { withAuth } from "@clerk/express"
 
 const app = express()
 
-app.use(ClerkExpressRequireAuth())
+app.use(withAuth())
 app.use(express.json())
 app.use(cors({
   origin: ["http://localhost:5173", "https://frontend-domain.com"],
