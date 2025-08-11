@@ -6,7 +6,7 @@ const router = express.Router()
 
 function verifyClerkSignature(req) {
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET
-  const signature = req.headers("svix-signature")
+  const signature = req.headers["svix-signature"]
   const payload = JSON.stringify(req.body)
   const hmac = crypto.createHmac("sha256", WEBHOOK_SECRET)
   hmac.update(payload)
@@ -41,7 +41,7 @@ router.post("/clerk-webhook", express.json(), async (req, res) => {
     }
     res.status(200).send("Webhook received!")
   } catch (error) {
-    console.error(err)
+    console.error(error)
     res.status(500).send("Internal server error!")
   }
 })

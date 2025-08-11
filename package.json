@@ -15,7 +15,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@clerk/clerk-sdk-node": "^5.1.6",
     "@clerk/express": "^1.7.17",
     "@prisma/client": "^6.13.0",
     "cors": "^2.8.5",
