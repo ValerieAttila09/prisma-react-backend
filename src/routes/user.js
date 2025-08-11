@@ -1,12 +1,12 @@
 import express from 'express'
-import { Prisma, PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import { requireAuth } from '@clerk/express'
 
 const prisma = new PrismaClient()
 const router = express.Router()
 
 router.post("/sync-user", requireAuth(), async (req, res) => {
-  const { userId, sessionId, claims } = req.auth
+  const { userId } = req.auth
 
   if (!userId) {
     return res.status(401).json({ error: "Unauthorized!" })

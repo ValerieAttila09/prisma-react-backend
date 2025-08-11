@@ -14,7 +14,7 @@ app.use(cors({
 
 app.use("/", webhookRoutes)
 app.use(authRoutes)
-app.use(userRoutes)
+app.use("/api", userRoutes)
 
 app.get("/", (req, res) => {
   res.send("Backend berjalan!")
